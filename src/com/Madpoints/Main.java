@@ -20,6 +20,12 @@ public class Main {
 //        }
 //
 //        btnPrint.setOnClickListener(new ClickListener());
+        btnPrint.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(String title) {
+                System.out.println(title + " was clicked");
+            }
+        });
         listen();
 //        Gearbox mcLaren = new Gearbox(6);
 //        mcLaren.operateClutch(true);
