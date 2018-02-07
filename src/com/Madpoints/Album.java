@@ -1,17 +1,17 @@
 package com.Madpoints;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public class Album {
     private String artist;
     private String title;
-    private LinkedList<Song> songs;
 
     public Album(String artist, String title) {
         this.artist = artist;
         this.title = title;
-        this.songs = new LinkedList<>();
+        SongList songs = new SongList();
     }
 
     public void addSong(Song song) {
@@ -31,5 +31,20 @@ public class Album {
 
     public String getTitle() {
         return title;
+    }
+
+    private class SongList {
+        private ArrayList<Song> songList = new ArrayList();
+
+        public SongList() {
+        }
+
+        public void addSong(Song song) {
+            this.songList.add(song);
+        }
+
+        public ArrayList<Song> getSongList() {
+            return songList;
+        }
     }
 }
