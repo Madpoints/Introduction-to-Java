@@ -7,11 +7,12 @@ import java.util.LinkedList;
 public class Album {
     private String artist;
     private String title;
+    private SongList songs;
 
     public Album(String artist, String title) {
         this.artist = artist;
         this.title = title;
-        SongList songs = new SongList();
+        this.songs = new SongList();
     }
 
     public void addSong(Song song) {
@@ -19,10 +20,7 @@ public class Album {
     }
 
     public void trackList() {
-        Iterator<Song> track = this.songs.iterator();
-        while (track.hasNext()) {
-            System.out.println(track.next().songInfo());
-        }
+        this.songs.trackList();
     }
 
     public String getArtist() {
@@ -34,17 +32,34 @@ public class Album {
     }
 
     private class SongList {
-        private ArrayList<Song> songList = new ArrayList();
+        private ArrayList<Song> songs;
 
-        public SongList() {
+        private SongList() {
+            this.songs = new ArrayList<Song>();
         }
 
-        public void addSong(Song song) {
-            this.songList.add(song);
+        private boolean add(Song song) {
+            if (songs.contains(song)) {
+                return false;
+            }
+            this.songs.add(song);
+            return true;
         }
 
-        public ArrayList<Song> getSongList() {
-            return songList;
+        public Song findSong(String title) {
+            for (Song checkedSong: this.songs) {
+                if (checkedSong.getTitle().equals(title)) {
+                    return checkedSong;
+                }
+            }
+
+            return null;
+        }
+
+        private void trackList() {
+            for (Song track: this.songs) {
+                System.out.println(track.songInfo());
+            }
         }
     }
 }

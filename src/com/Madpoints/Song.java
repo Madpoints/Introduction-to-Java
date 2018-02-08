@@ -12,4 +12,8 @@ public class Song {
     public String songInfo() {
         return this.title + " " + this.duration;
     }
+
+    public String getTitle() {
+        return title;
+    }
 }
