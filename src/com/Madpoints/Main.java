@@ -3,18 +3,20 @@ package com.Madpoints;
 public class Main {
 
     public static void main(String[] args) {
-        Dog dog = new Dog("Corgie");
-        dog.breathe();
-        dog.eat();
+       SearchTree tree = new SearchTree(null);
+       tree.traverse(tree.getRoot());
 
-        Parrot parrot = new Parrot("Parrot");
-        parrot.eat();
-        parrot.breathe();
-        parrot.fly();
+       String stringData = "5 7 3 9 8 2 1 8 4 6";
 
-        Penguin penguin = new Penguin("Emperor");
-        penguin.eat();
-        penguin.breathe();
-        penguin.fly();
+       String[] data = stringData.split(" ");
+       for (String s : data) {
+           tree.addItem(new Node(s));
+       }
+
+       tree.traverse(tree.getRoot());
+
+       tree.removeItem(new Node("3"));
+
+       tree.traverse(tree.getRoot());
     }
 }
