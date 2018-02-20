@@ -1,22 +1,23 @@
 package com.Madpoints;
 
+import java.util.ArrayList;
+
 public class Main {
 
     public static void main(String[] args) {
-       SearchTree tree = new SearchTree(null);
-       tree.traverse(tree.getRoot());
+        ArrayList<Integer> items = new ArrayList<>();
+        items.add(1);
+        items.add(2);
+        items.add(3);
+        items.add(4);
+        items.add(5);
 
-       String stringData = "5 7 3 9 8 2 1 8 4 6";
+        printDouble(items);
+    }
 
-       String[] data = stringData.split(" ");
-       for (String s : data) {
-           tree.addItem(new Node(s));
-       }
-
-       tree.traverse(tree.getRoot());
-
-       tree.removeItem(new Node("3"));
-
-       tree.traverse(tree.getRoot());
+    private static void printDouble(ArrayList<Integer> n) {
+        for (int i : n) {
+            System.out.println(i * 2);
+        }
     }
 }
