@@ -2,7 +2,7 @@ package com.Madpoints;
 
 import java.util.ArrayList;
 
-public class Team {
+public class Team<T extends Player> {
 
     private String name;
     int played = 0;
@@ -10,7 +10,7 @@ public class Team {
     int lost = 0;
     int tied = 0;
 
-    private ArrayList<Player> members = new ArrayList<>();
+    private ArrayList<T> members = new ArrayList<>();
 
     public Team(String name) {
         this.name = name;
@@ -20,13 +20,13 @@ public class Team {
         return name;
     }
 
-    public boolean addPlayer(Player player) {
+    public boolean addPlayer(T player) {
         if (members.contains(player)) {
             System.out.println(player.getName() + " is already on the team");
             return false;
         } else {
             members.add(player);
-            System.out.println(player.getName() + " is now on team " + this.name);
+            System.out.println(player.getName() + " is now on the " + this.name);
             return true;
         }
     }
@@ -35,7 +35,7 @@ public class Team {
         return this.members.size();
     }
 
-    public void gameResult(Team opponent, int ourScore, int theirScore) {
+    public void gameResult(Team<T> opponent, int ourScore, int theirScore) {
         if (ourScore > theirScore) {
             System.out.println("Won vs " + opponent.getName());
             won++;
